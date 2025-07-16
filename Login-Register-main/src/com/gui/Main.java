@@ -2,6 +2,7 @@
 package com.gui;
 
 import com.database.DerbyConnection;
+import com.database.DatabaseTableCreator;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
@@ -248,7 +249,7 @@ public class Main extends javax.swing.JFrame {
     FlatDarkLaf.setup();
     // Connect to Derby DB and create required tables
     DerbyConnection.getConnection();
-
+    DatabaseTableCreator.createTables();
 
     // Launch GUI
     java.awt.EventQueue.invokeLater(() -> {

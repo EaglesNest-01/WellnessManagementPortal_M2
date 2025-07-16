@@ -27,14 +27,14 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jTextField1" max="32767" attributes="0"/>
+                  <Component id="counsellorText" max="32767" attributes="0"/>
                   <Component id="jLabel2" max="32767" attributes="0"/>
-                  <Component id="jTextField2" max="32767" attributes="0"/>
+                  <Component id="dateText" max="32767" attributes="0"/>
                   <Component id="jLabel3" alignment="0" pref="220" max="32767" attributes="0"/>
                   <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jTextField3" max="32767" attributes="0"/>
+                  <Component id="timeText" max="32767" attributes="0"/>
                   <Component id="jLabel5" max="32767" attributes="0"/>
-                  <Component id="jTextField4" max="32767" attributes="0"/>
+                  <Component id="reasonText" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="474" max="-2" attributes="0"/>
@@ -47,11 +47,11 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="197" max="-2" attributes="0"/>
+              <Component id="bookAppointmentbt" min="-2" pref="197" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="222" max="-2" attributes="0"/>
+              <Component id="reschedulebt" min="-2" pref="222" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="197" max="-2" attributes="0"/>
+              <Component id="cancelAppointmentbt" min="-2" pref="197" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -66,19 +66,19 @@
                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="counsellorText" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateText" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                      <Component id="timeText" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
+                      <Component id="reasonText" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
@@ -87,9 +87,9 @@
               </Group>
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="reschedulebt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelAppointmentbt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bookAppointmentbt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="118" max="32767" attributes="0"/>
           </Group>
@@ -120,12 +120,15 @@
         <Property name="text" type="java.lang.String" value="Time:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="counsellorText">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[71, 35]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="counsellorTextActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -138,12 +141,15 @@
         <Property name="text" type="java.lang.String" value="Counsellor:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="dateText">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[71, 35]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateTextActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -156,12 +162,15 @@
         <Property name="text" type="java.lang.String" value="Date:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="timeText">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[71, 35]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeTextActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -174,12 +183,15 @@
         <Property name="text" type="java.lang.String" value="Reason:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="reasonText">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[71, 35]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reasonTextActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -208,7 +220,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="reschedulebt">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ed" green="63" red="39" type="rgb"/>
@@ -226,10 +238,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reschedulebtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="cancelAppointmentbt">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="31" green="39" red="d3" type="rgb"/>
@@ -247,10 +259,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelAppointmentbtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="bookAppointmentbt">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="68" green="cc" red="68" type="rgb"/>
@@ -268,7 +280,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookAppointmentbtActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
