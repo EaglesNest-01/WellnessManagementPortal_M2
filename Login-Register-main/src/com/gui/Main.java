@@ -1,6 +1,7 @@
 
 package com.gui;
 
+import com.database.DerbyConnection;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
@@ -243,16 +244,17 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        FlatDarkLaf.setup();
+    public static void main(String[] args) {
+    FlatDarkLaf.setup();
+    // Connect to Derby DB and create required tables
+    DerbyConnection.getConnection();
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
-    }
+
+    // Launch GUI
+    java.awt.EventQueue.invokeLater(() -> {
+        new Main().setVisible(true);
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

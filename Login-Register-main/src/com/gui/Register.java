@@ -4,7 +4,7 @@
  */
 package com.gui;
 
-import com.database.Mysql;
+import com.database.DatabaseHelper;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -228,7 +228,7 @@ public class Register extends javax.swing.JPanel {
         }else{
             try {
                 //register user
-                Mysql.execute(
+                DatabaseHelper.execute(
                         String.format("INSERT INTO `users` (`name`,`email`,`password`,`gender`) "
                                 + "VALUES('%s','%s','%s','%s')",name,email,password,gender)
                 );
