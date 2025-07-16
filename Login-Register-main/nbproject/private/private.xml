@@ -5,8 +5,8 @@
         <group>
             <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/gui/Main.java</file>
             <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/database/DatabaseHelper.java</file>
-            <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/gui/Register.java</file>
-            <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/gui/AppointmentManagement.java</file>
+            <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/database/AppointmentDAO.java</file>
+            <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/database/DatabaseTableCreator.java</file>
             <file>file:/D:/CODE/WellnessManagementPortal_M2/Login-Register-main/src/com/database/DerbyConnection.java</file>
         </group>
     </open-files>
