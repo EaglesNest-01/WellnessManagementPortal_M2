@@ -6,11 +6,16 @@ import java.sql.SQLException;
 
 public class DerbyConnection {
 
-    private static final String DB_URL = "jdbc:derby:D:\\CODE\\WellnessManagementPortal_M2\\Database\\WellnessDB;create=true";
+    private static final String DB_URL ="jdbc:derby:C:\\Users\\JANE\\OneDrive\\Documents\\m2_WellnessApp\\WellnessManagementPortal_M2\\Database\\WellnessDB;create=true";
+            /*"jdbc:derby:D:\\CODE\\WellnessManagementPortal_M2\\Database\\WellnessDB;create=true"*/;
+    
     private static Connection conn = null;
+
+    
 
     public static Connection getConnection() {
         try {
+
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             conn = DriverManager.getConnection(DB_URL);
             System.out.println("Embedded Derby DB connected.");
