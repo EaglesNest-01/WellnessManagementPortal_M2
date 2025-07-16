@@ -1,3 +1,4 @@
+ New-database
 Wed Jul 16 15:14:25 SAST 2025 Thread[#1,main,5,main] Cleanup action starting
 java.sql.SQLException: XJ040.C : [0] C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\WellnessManagementPortal_M2\Database\WellnessDB, [1] jdk.internal.loader.ClassLoaders$AppClassLoader@3f99bd52
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
@@ -327,3 +328,15 @@ ERROR XSDB6: XSDB6.D : [0] C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\Welln
 	at com.gui.Main.main(Main.java:252)
 ============= end nested exception, level (2) ===========
 Cleanup action completed
+=======
+----------------------------------------------------------------
+Wed Jul 16 14:38:46 SAST 2025D001 : [0] The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217), [1] a816c00e-0198-133e-9304-0000073e41a0, [2] C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\WellnessManagementPortal_M2\Database\WellnessDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@3f99bd52, [4] file:/C:/Users/JANE/OneDrive/Documents/m2_WellnessApp/WellnessManagementPortal_M2/db-derby-10.17.1.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=21.0.6+8-LTS-188
+user.dir=C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\WellnessManagementPortal_M2\Login-Register-main
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+C005 : [0] 
+ main
