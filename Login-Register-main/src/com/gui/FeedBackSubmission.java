@@ -107,7 +107,7 @@ public class FeedBackSubmission extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Write us a Comment...");
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
+        jTable1.setBackground(new java.awt.Color(12, 12, 12));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -150,7 +150,7 @@ public class FeedBackSubmission extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 94, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +172,7 @@ public class FeedBackSubmission extends javax.swing.JPanel {
                             .addComponent(IdText, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 40, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
