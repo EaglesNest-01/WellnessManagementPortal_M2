@@ -109,55 +109,57 @@ public class AppointmentView extends JPanel {
     }
     
     private void updateAppointment(ActionEvent e) {
-        int selectedRow = appointmentTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(this, "Please select an appointment to update");
-            return;
-        }
-        
-        int id = (int) appointmentTable.getValueAt(selectedRow, 0);
-        String counsellor = (String) counselorComboBox.getSelectedItem();
-        String date = dateField.getText();
-        String time = timeField.getText();
-        String reason = reasonField.getText();
-        
-        Appointment appointment = new Appointment(id, counsellor, date, time, reason);
-        
-        if (controller.updateAppointment(appointment)) {
-            JOptionPane.showMessageDialog(this, "Appointment updated successfully");
+    int selectedRow = appointmentTable.getSelectedRow();
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select an appointment to update");
+        return;
+    }
+
+    int id = (int) appointmentTable.getValueAt(selectedRow, 0);
+    String counsellor = (String) counselorComboBox.getSelectedItem();
+    String date = dateField.getText();
+    String time = timeField.getText();
+    String reason = reasonField.getText();
+
+    // Create updated Appointment object
+    Appointment appointment = new Appointment(id, counsellor, date, time, reason);
+
+    // Call controller method with full object
+    if (controller.updateAppointment(appointment)) {
+        JOptionPane.showMessageDialog(this, "Appointment updated successfully");
+        clearFields();
+        refreshAppointmentTable();
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to update appointment", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    private void deleteAppointment(ActionEvent e) {
+    int selectedRow = appointmentTable.getSelectedRow();
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select an appointment to delete");
+        return;
+    }
+
+    int id = (int) appointmentTable.getValueAt(selectedRow, 0);
+
+    int confirm = JOptionPane.showConfirmDialog(
+        this,
+        "Are you sure you want to delete this appointment?",
+        "Confirm Delete",
+        JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        if (controller.deleteAppointment(id)) {
+            JOptionPane.showMessageDialog(this, "Appointment deleted successfully");
             clearFields();
             refreshAppointmentTable();
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to update appointment", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Failed to delete appointment", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    private void deleteAppointment(ActionEvent e) {
-        int selectedRow = appointmentTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(this, "Please select an appointment to delete");
-            return;
-        }
-        
-        int id = (int) appointmentTable.getValueAt(selectedRow, 0);
-        
-        int confirm = JOptionPane.showConfirmDialog(
-            this, 
-            "Are you sure you want to delete this appointment?", 
-            "Confirm Delete", 
-            JOptionPane.YES_NO_OPTION
-        );
-        
-        if (confirm == JOptionPane.YES_OPTION) {
-            if (controller.deleteAppointment(id)) {
-                JOptionPane.showMessageDialog(this, "Appointment deleted successfully");
-                clearFields();
-                refreshAppointmentTable();
-            } else {
-                JOptionPane.showMessageDialog(this, "Failed to delete appointment", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
+}
     
     private void refreshAppointmentTable() {
         tableModel.setRowCount(0);
