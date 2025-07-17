@@ -4,17 +4,41 @@
  */
 package com.gui;
 
+import view.CounselorView;
 /**
  *
  * @author rmara
  */
 public class CounsellorManagement extends javax.swing.JPanel {
 
+    // Create an instance of the existing CounselorView
+    private final CounselorView counselorView = new CounselorView();
     /**
      * Creates new form CounsellorManagement
      */
     public CounsellorManagement() {
         initComponents();
+        
+        wireComponents();
+        counselorView.initializeView();
+        
+    }
+    
+    //connect the netbean components to existing View
+     private void wireComponents() {
+        // Map NetBeans components to the existing View's components
+         // Connect NetBeans components to CounselorView using setters
+        counselorView.setAddButton(jButton1);         // Add button
+        counselorView.setEditButton(jButton2);        // Edit button
+        counselorView.setDeleteButton(jButton3);      // Delete button
+        counselorView.setEmpIdField(jTextField1);     // EmpID
+        counselorView.setNameField(jTextField2);      // Name
+        counselorView.setSpecializationField(jTextField3); // Specialization
+        counselorView.setAvailabilityField(jTextField4);   // Availability
+        counselorView.setCounselorTable(jTable1);     // Table    
+    }
+       public void refreshCounselorData() {
+        counselorView.refreshView();
     }
 
     /**
