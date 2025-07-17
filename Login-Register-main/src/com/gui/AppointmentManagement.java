@@ -4,18 +4,74 @@
  */
 package com.gui;
 
+import com.database.AppointmentDAO;
+import controller.AppointmentController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Appointment;
+
 /**
  *
  * @author rmara
  */
 public class AppointmentManagement extends javax.swing.JPanel {
-
+private AppointmentController controller = new AppointmentController();
+private DefaultTableModel tableModel;
     /**
      * Creates new form AppointmentManagement
      */
-    public AppointmentManagement() {
-        initComponents();
+  public AppointmentManagement() {
+    initComponents();
+    initializeTableModel();
+    loadAppointments();
+}
+
+private void initializeTableModel() {
+    tableModel = new DefaultTableModel(
+        new Object[][]{},
+        new String[]{"ID", "Counsellor", "Date", "Time", "Reason"}
+    ) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Make table cells non-editable
+        }
+    };
+    jTable1.setModel(tableModel);
+    jTable1.getColumnModel().getColumn(0).setMinWidth(0); // Hide ID column
+    jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+    jTable1.getColumnModel().getColumn(0).setWidth(0);
+}
+//button actions
+
+
+private void loadAppointments() {
+    try {
+        tableModel.setRowCount(0); // Clear existing data
+        
+        for (Appointment app : controller.getAllAppointments()) {
+            tableModel.addRow(new Object[]{
+                app.getId(),
+                app.getCounsellor(),
+                app.getDate(),
+                app.getTime(),
+                app.getReason()
+            });
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error loading appointments: " + e.getMessage(), 
+            "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+
+private void clearForm() {
+    counsellorText.setText("");
+    dateText.setText("");
+    timeText.setText("");
+    reasonText.setText("");
+    jTable1.clearSelection();
+}       
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,18 +268,126 @@ public class AppointmentManagement extends javax.swing.JPanel {
 
     private void reschedulebtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reschedulebtActionPerformed
         // TODO add your handling code here:
-
+ int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an appointment to reschedule", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            int id = (int) jTable1.getValueAt(selectedRow, 0);
+            String counsellor = counsellorText.getText();
+            String date = dateText.getText();
+            String time = timeText.getText();
+            String reason = reasonText.getText();
+            
+            Appointment appointment = new Appointment(id, counsellor, date, time, reason);
+            
+            if (controller.updateAppointment(appointment)) {
+                JOptionPane.showMessageDialog(this, "Appointment rescheduled successfully!");
+                clearForm();
+                loadAppointments();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to reschedule appointment", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_reschedulebtActionPerformed
 
     private void cancelAppointmentbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelAppointmentbtActionPerformed
         // TODO add your handling code here:
+         int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an appointment to cancel", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(
+            this, 
+            "Are you sure you want to cancel this appointment?", 
+            "Confirm Cancellation", 
+            JOptionPane.YES_NO_OPTION
+        );
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                int id = (int) jTable1.getValueAt(selectedRow, 0);
+                
+                if (controller.deleteAppointment(id)) {
+                    JOptionPane.showMessageDialog(this, "Appointment cancelled successfully!");
+                    clearForm();
+                    loadAppointments();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to cancel appointment", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_cancelAppointmentbtActionPerformed
 
     private void bookAppointmentbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookAppointmentbtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bookAppointmentbtActionPerformed
+       
+     // Validate inputs first
+   if (!validateInputs() || !validateDateTime()) {
+        return;
+    }
+   
 
+    
+    try {
+        String counsellor = counsellorText.getText().trim();
+        String date = dateText.getText().trim();
+        String time = timeText.getText().trim();
+        String reason = reasonText.getText().trim();
+        
+        if (counsellor.isEmpty() || reason.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Counsellor and Reason fields are required!",
+                "Validation Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Appointment appointment = new Appointment(0, counsellor, date, time, reason);
+        
+        if (controller.createAppointment(appointment)) {
+            JOptionPane.showMessageDialog(this, 
+                "Appointment booked successfully!",
+                "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+            clearForm();
+            loadAppointments();
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                "Failed to book appointment. Please try again.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Error: " + e.getMessage(),
+            "System Error",
+            JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_bookAppointmentbtActionPerformed
+private boolean validateInputs() {
+    if (counsellorText.getText().trim().isEmpty() ||
+        dateText.getText().trim().isEmpty() ||
+        timeText.getText().trim().isEmpty() ||
+        reasonText.getText().trim().isEmpty()) {
+        
+        JOptionPane.showMessageDialog(this, 
+            "All fields are required!", 
+            "Validation Error", 
+            JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
     private void counsellorTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counsellorTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_counsellorTextActionPerformed
@@ -257,4 +421,25 @@ public class AppointmentManagement extends javax.swing.JPanel {
     private javax.swing.JButton reschedulebt;
     private javax.swing.JTextField timeText;
     // End of variables declaration//GEN-END:variables
+
+  private boolean validateDateTime() {
+    try {
+        // Validate date format (YYYY-MM-DD)
+        String date = dateText.getText().trim();
+        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            throw new IllegalArgumentException("Date must be in YYYY-MM-DD format");
+        }
+        
+        // Validate time format (HH:MM)
+        String time = timeText.getText().trim();
+        if (!time.matches("\\d{2}:\\d{2}")) {
+            throw new IllegalArgumentException("Time must be in HH:MM format");
+        }
+        
+        return true;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage(), "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+}
 }
