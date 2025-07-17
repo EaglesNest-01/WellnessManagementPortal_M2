@@ -88,13 +88,13 @@ public class CounselorController {
         }
     }
        // Delete counselor
-    public boolean deleteCounselor(int counselorId) {
+    public boolean deleteCounselor(String counselorId) {
         String sql = "DELETE FROM counselors WHERE id = ?";
         
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
-            pstmt.setInt(1, counselorId);
+            pstmt.setString(1, counselorId);
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error deleting counselor: " + e.getMessage());
