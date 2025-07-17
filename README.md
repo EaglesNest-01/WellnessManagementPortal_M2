@@ -86,10 +86,10 @@ com/
 - NetBeans IDE
 
 ## 👤 Contributors
-Jeremy Kahora
-TGThemba Gumede
-Dieter Olivier
-Jason Romario Maracha Bond
+- Jeremy Kahora
+- TGThemba Gumede
+- Dieter Olivier
+- Jason Romario Maracha Bond
 
 ## 📚 License
 
