@@ -1,5 +1,8 @@
 # Student Wellness Web Portal
 
+# GitHub Link
+https://github.com/EaglesNest-01/WellnessManagementPortal_M2
+
 A Java-based desktop application built using Swing and JavaDB (Apache Derby), designed to manage student wellness through appointment booking, counselor management, and feedback submission. This project follows an **Object-Oriented Programming (OOP)** approach and uses the **MVC (Model-View-Controller)** design pattern to ensure clean architecture and maintainability.
 
 ## 🧩 Project Structure
