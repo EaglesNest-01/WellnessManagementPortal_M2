@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
-Thu Jul 17 00:42:58 SAST 2025D001 : [0] The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217), [1] a816c00e-0198-1567-bb5e-0000073e9250, [2] C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\WellnessManagementPortal_M2\Database\WellnessDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@3f99bd52, [4] file:/C:/Users/JANE/OneDrive/Documents/m2_WellnessApp/WellnessManagementPortal_M2/db-derby-10.17.1.0-bin/lib/derby.jar
+Thu Jul 17 14:32:41 SAST 2025D001 : [0] The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217), [1] a816c00e-0198-185f-5cf5-0000073ca108, [2] C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\WellnessManagementPortal_M2\Database\WellnessDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@3f99bd52, [4] file:/C:/Users/JANE/OneDrive/Documents/m2_WellnessApp/WellnessManagementPortal_M2/db-derby-10.17.1.0-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=21.0.6+8-LTS-188
 user.dir=C:\Users\JANE\OneDrive\Documents\m2_WellnessApp\WellnessManagementPortal_M2\Login-Register-main

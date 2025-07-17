@@ -12,20 +12,20 @@ import view.CounselorView;
 public class CounsellorManagement extends javax.swing.JPanel {
 
     // Create an instance of the existing CounselorView
-    private final CounselorView counselorView = new CounselorView();
+   // private final CounselorView counselorView = new CounselorView();
     /**
      * Creates new form CounsellorManagement
      */
     public CounsellorManagement() {
         initComponents();
         
-        wireComponents();
-        counselorView.initializeView();
+      //  wireComponents();
+        //counselorView.initializeView();
         
     }
     
     //connect the netbean components to existing View
-     private void wireComponents() {
+    /* private void wireComponents() {
         // Map NetBeans components to the existing View's components
          // Connect NetBeans components to CounselorView using setters
         counselorView.setAddButton(jButton1);         // Add button
@@ -39,7 +39,7 @@ public class CounsellorManagement extends javax.swing.JPanel {
     }
        public void refreshCounselorData() {
         counselorView.refreshView();
-    }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -27,6 +27,37 @@ public class CounselorView extends JPanel{
     private javax.swing.JTextField jTextField4;
      private javax.swing.JTable jTable1;
     
+      public void setAddButton(JButton button) {
+        this.jButton1 = button;
+    }
+
+    public void setEditButton(JButton button) {
+        this.jButton2 = button;
+    }
+
+    public void setDeleteButton(JButton button) {
+        this.jButton3 = button;
+    }
+
+    public void setEmpIdField(JTextField field) {
+        this.jTextField1 = field;
+    }
+
+    public void setNameField(JTextField field) {
+        this.jTextField2 = field;
+    }
+
+    public void setSpecializationField(JTextField field) {
+        this.jTextField3 = field;
+    }
+
+    public void setAvailabilityField(JTextField field) {
+        this.jTextField4 = field;
+    }
+
+    public void setCounselorTable(JTable table) {
+        this.jTable1 = table;
+    }
      public CounselorView() {
        
         this.controller = new CounselorController();
@@ -118,6 +149,14 @@ public class CounselorView extends JPanel{
     }
 
     private void refreshTable() {
+        loadTableData();
+    }
+    public void initializeView() {
+        setupControllers();
+        loadTableData();
+    }
+
+    public void refreshView() {
         loadTableData();
     }
 
